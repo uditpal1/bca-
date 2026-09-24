@@ -76,7 +76,7 @@ Examples:
 
 Without DBMS:
 
-```text
+
 Student information
         ↓
 Different files
