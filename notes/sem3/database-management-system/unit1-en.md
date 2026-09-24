@@ -98,7 +98,7 @@ The DBMS acts as an interface between the users/applications and the database.
 
 ---
 
-##3. Purpose of a Database System
+## 3. Purpose of a Database System
 
 The main purpose of a database system is to provide an efficient and reliable method for storing and managing large amounts of data.
 
@@ -138,7 +138,7 @@ The important purposes are:
 
 ---
 
-###3.1 Data Storage
+### 3.1 Data Storage
 
 A DBMS provides a systematic way to store large amounts of data.
 
@@ -159,7 +159,7 @@ in a database.
 
 ---
 
-###3.2 Easy Data Retrieval
+### 3.2 Easy Data Retrieval
 
 DBMS allows users to quickly retrieve required information.
 
@@ -174,7 +174,7 @@ This query retrieves students studying in semester 2.
 
 ---
 
-###3.3 Data Modification
+### 3.3 Data Modification
 
 Data can be:
 
