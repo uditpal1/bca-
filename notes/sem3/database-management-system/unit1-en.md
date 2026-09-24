@@ -98,7 +98,7 @@ The DBMS acts as an interface between the users/applications and the database.
 
 ---
 
-3. Purpose of a Database System
+##3. Purpose of a Database System
 
 The main purpose of a database system is to provide an efficient and reliable method for storing and managing large amounts of data.
 
@@ -138,7 +138,7 @@ The important purposes are:
 
 ---
 
-3.1 Data Storage
+###3.1 Data Storage
 
 A DBMS provides a systematic way to store large amounts of data.
 
@@ -159,7 +159,7 @@ in a database.
 
 ---
 
-3.2 Easy Data Retrieval
+###3.2 Easy Data Retrieval
 
 DBMS allows users to quickly retrieve required information.
 
@@ -174,7 +174,7 @@ This query retrieves students studying in semester 2.
 
 ---
 
-3.3 Data Modification
+###3.3 Data Modification
 
 Data can be:
 
@@ -196,7 +196,7 @@ This changes the semester of student 101.
 
 ---
 
-3.4 Data Security
+###3.4 Data Security
 
 A DBMS provides mechanisms to control access to data.
 
@@ -213,7 +213,7 @@ Thus, every user does not necessarily have access to every piece of information.
 
 ---
 
-3.5 Data Integrity
+###3.5 Data Integrity
 
 Data integrity means maintaining the accuracy, validity and consistency of data.
 
@@ -232,7 +232,7 @@ DBMS constraints help prevent invalid data.
 
 ---
 
-3.6 Reduction of Data Redundancy
+###3.6 Reduction of Data Redundancy
 
 Data redundancy means unnecessary duplication of the same data.
 
@@ -252,7 +252,7 @@ A properly designed database can reduce such redundancy.
 
 ---
 
-3.7 Data Sharing
+###3.7 Data Sharing
 
 A database allows authorized users and applications to share data.
 
@@ -275,7 +275,7 @@ All can work with appropriate portions of the same database.
 
 ---
 
-3.8 Concurrent Access
+###3.8 Concurrent Access
 
 Multiple users can access a database at the same time.
 
@@ -294,7 +294,7 @@ The DBMS manages such concurrent operations.
 
 ---
 
-3.9 Backup and Recovery
+###3.9 Backup and Recovery
 
 A DBMS provides mechanisms for backup and recovery.
 
@@ -316,7 +316,7 @@ the database can be recovered using appropriate backup and recovery mechanisms.
 
 ---
 
-3.10 Data Independence
+###3.10 Data Independence
 
 DBMS provides data independence.
 
@@ -327,7 +327,7 @@ Data independence is discussed in detail later in this unit.
 
 ---
 
-4. Traditional File System
+##4. Traditional File System
 
 Before DBMS became common, organizations often stored data in separate files.
 
@@ -346,11 +346,11 @@ Each application might maintain its own files.
 
 ---
 
-5. Problems of Traditional File System
+##5. Problems of Traditional File System
 
 Traditional file systems have several disadvantages.
 
-5.1 Data Redundancy
+###5.1 Data Redundancy
 
 The same data may be stored in multiple files.
 
@@ -373,7 +373,7 @@ The same information is repeated.
 
 ---
 
-5.2 Data Inconsistency
+###5.2 Data Inconsistency
 
 If duplicated data is not updated everywhere, different files may contain different information.
 
@@ -388,7 +388,7 @@ Now the database information is inconsistent.
 
 ---
 
-5.3 Difficulty in Data Access
+###5.3 Difficulty in Data Access
 
 Searching information from many independent files can be difficult.
 
@@ -403,7 +403,7 @@ In a DBMS, this can be done using a simple SQL query.
 
 ---
 
-5.4 Data Isolation
+###5.4 Data Isolation
 
 Data may be distributed among different files and formats.
 
@@ -412,7 +412,7 @@ This makes it difficult to combine and process the information.
 
 ---
 
-5.5 Integrity Problems
+###5.5 Integrity Problems
 
 It can be difficult to enforce rules on data.
 
@@ -425,28 +425,28 @@ A traditional file system may not easily enforce such rules.
 
 ---
 
-5.6 Security Problems
+###5.6 Security Problems
 
 It can be difficult to provide detailed access control.
 
 
 ---
 
-5.7 Concurrent Access Problems
+###5.7 Concurrent Access Problems
 
 Multiple users modifying the same file simultaneously may cause conflicts.
 
 
 ---
 
-5.8 Backup and Recovery Problems
+###5.8 Backup and Recovery Problems
 
 Recovering data after failures can be more difficult.
 
 
 ---
 
-6. File System vs DBMS
+##6. File System vs DBMS
 
 Feature	File System	DBMS
 
@@ -466,7 +466,7 @@ Integrity constraints	Limited	Supported
 
 ---
 
-7. Advantages of DBMS
+##7. Advantages of DBMS
 
 The important advantages of DBMS are:
 
@@ -513,7 +513,7 @@ Database administrators can manage the database centrally.
 
 ---
 
-8. Data Abstraction
+##8. Data Abstraction
 
 Definition
 
@@ -524,7 +524,7 @@ A database may contain extremely complex storage details, but users do not need 
 
 ---
 
-9. Levels of Data Abstraction
+##9. Levels of Data Abstraction
 
 There are three major levels:
 
@@ -547,7 +547,7 @@ External Level
 
 ---
 
-10. Physical Level
+##10. Physical Level
 
 Definition
 
@@ -581,7 +581,7 @@ Record 15
 
 ---
 
-11. Logical Level
+##11. Logical Level
 
 Definition
 
@@ -602,7 +602,7 @@ The logical level describes the structure of the student table without describin
 
 ---
 
-12. View Level
+##12. View Level
 
 Definition
 
@@ -640,7 +640,7 @@ All these views may come from the same underlying database.
 
 ---
 
-13. Three-Level Database Architecture
+##13. Three-Level Database Architecture
 
 USERS
                    |
@@ -683,7 +683,7 @@ INTERNAL
 
 ---
 
-14. Data Model
+##14. Data Model
 
 Definition
 
@@ -698,7 +698,7 @@ In simple words:
 
 ---
 
-15. Types of Data Models
+##15. Types of Data Models
 
 Important data models include:
 
@@ -721,7 +721,7 @@ Important data models include:
 
 ---
 
-16. Hierarchical Data Model
+##16. Hierarchical Data Model
 
 In the hierarchical model, data is organized in a tree-like structure.
 
@@ -753,7 +753,7 @@ Suitable for hierarchical data
 
 ---
 
-17. Network Data Model
+##17. Network Data Model
 
 The network model represents data using records and relationships/links.
 
@@ -771,7 +771,7 @@ It can represent many-to-many relationships.
 
 ---
 
-18. Relational Data Model
+##18. Relational Data Model
 
 The relational model represents data in the form of tables.
 
@@ -815,7 +815,7 @@ SQL Server
 
 ---
 
-19. Entity-Relationship Model
+##19. Entity-Relationship Model
 
 The ER model represents the database using:
 
@@ -839,7 +839,7 @@ The ER model will be covered in detail in Unit-II.
 
 ---
 
-20. Object-Oriented Data Model
+##20. Object-Oriented Data Model
 
 The object-oriented model represents information as objects.
 
@@ -854,7 +854,7 @@ It is useful for applications involving complex objects.
 
 ---
 
-21. Data Independence
+##21. Data Independence
 
 Definition
 
@@ -872,7 +872,7 @@ There are two types:
 
 ---
 
-22. Physical Data Independence
+##22. Physical Data Independence
 
 Definition
 
@@ -908,7 +908,7 @@ Changing storage devices
 
 ---
 
-23. Logical Data Independence
+##23. Logical Data Independence
 
 Definition
 
@@ -933,7 +933,7 @@ Existing applications/views that do not use the new attribute may continue to wo
 
 ---
 
-24. Physical vs Logical Data Independence
+##24. Physical vs Logical Data Independence
 
 Physical Data Independence	Logical Data Independence
 
@@ -959,7 +959,7 @@ Structure
 
 ---
 
-25. Data Definition Language (DDL)
+##25. Data Definition Language (DDL)
 
 Definition
 
@@ -977,7 +977,7 @@ RENAME is also commonly classified as DDL.
 
 ---
 
-26. CREATE Command
+##26. CREATE Command
 
 The CREATE command is used to create database objects.
 
@@ -1046,7 +1046,7 @@ maximum length = 50 characters
 
 ---
 
-27. ALTER Command
+##27. ALTER Command
 
 Definition
 
@@ -1094,7 +1094,7 @@ Modern MySQL versions support this syntax.
 
 ---
 
-28. DROP Command
+##28. DROP Command
 
 Definition
 
@@ -1126,7 +1126,7 @@ DROP should be used carefully because the object is removed.
 
 ---
 
-29. TRUNCATE Command
+##29. TRUNCATE Command
 
 Definition
 
@@ -1143,7 +1143,7 @@ Rows → 0
 
 ---
 
-30. DROP vs TRUNCATE
+##30. DROP vs TRUNCATE
 
 DROP	TRUNCATE
 
@@ -1157,7 +1157,7 @@ DDL	DDL
 
 ---
 
-31. Data Manipulation Language (DML)
+##31. Data Manipulation Language (DML)
 
 Definition
 
@@ -1172,7 +1172,7 @@ DELETE
 
 ---
 
-32. INSERT Command
+##32. INSERT Command
 
 Definition
 
@@ -1222,7 +1222,7 @@ VALUES
 
 ---
 
-33. UPDATE Command
+##33. UPDATE Command
 
 Definition
 
@@ -1265,7 +1265,7 @@ This can update the semester of all records.
 
 ---
 
-34. DELETE Command
+##34. DELETE Command
 
 Definition
 
@@ -1290,7 +1290,7 @@ This removes all records but keeps the table structure.
 
 ---
 
-35. Data Query Language (DQL)
+##35. Data Query Language (DQL)
 
 Definition
 
@@ -1303,7 +1303,7 @@ SELECT
 
 ---
 
-36. SELECT Command
+##36. SELECT Command
 
 Display all columns
 
@@ -1336,7 +1336,7 @@ This displays students whose semester is 2.
 
 ---
 
-37. Database Manager
+##37. Database Manager
 
 Definition
 
@@ -1378,7 +1378,7 @@ DATABASE
 
 ---
 
-38. Database Administrator (DBA)
+##38. Database Administrator (DBA)
 
 Definition
 
@@ -1387,16 +1387,16 @@ A Database Administrator (DBA) is a person who is responsible for managing, main
 
 ---
 
-39. Responsibilities of DBA
+##39. Responsibilities of DBA
 
-39.1 Database Installation
+###39.1 Database Installation
 
 The DBA may install and configure the database management system.
 
 
 ---
 
-39.2 Database Security
+###39.2 Database Security
 
 The DBA controls who can access particular data.
 
@@ -1417,56 +1417,56 @@ Limited access
 
 ---
 
-39.3 User Management
+###39.3 User Management
 
 The DBA creates users and assigns privileges.
 
 
 ---
 
-39.4 Backup
+###39.4 Backup
 
 The DBA plans and manages database backups.
 
 
 ---
 
-39.5 Recovery
+###39.5 Recovery
 
 The DBA helps recover databases after failures.
 
 
 ---
 
-39.6 Performance Monitoring
+###39.6 Performance Monitoring
 
 The DBA monitors database performance and identifies bottlenecks.
 
 
 ---
 
-39.7 Storage Management
+###39.7 Storage Management
 
 The DBA manages storage requirements.
 
 
 ---
 
-39.8 Integrity Management
+###39.8 Integrity Management
 
 The DBA ensures that database constraints and rules are properly maintained.
 
 
 ---
 
-39.9 Database Maintenance
+###39.9 Database Maintenance
 
 The DBA performs routine maintenance and configuration activities.
 
 
 ---
 
-40. Database Users
+##40. Database Users
 
 Different types of users interact with a DBMS.
 
@@ -1491,7 +1491,7 @@ Important categories include:
 
 ---
 
-41. Naive or Parametric Users
+##41. Naive or Parametric Users
 
 These users interact with the database through predefined applications.
 
@@ -1511,7 +1511,7 @@ ATM user
 
 ---
 
-42. Application Programmers
+##42. Application Programmers
 
 Application programmers develop software applications that interact with databases.
 
@@ -1529,7 +1529,7 @@ For example, a programmer may create a college management system that stores inf
 
 ---
 
-43. Sophisticated Users
+##43. Sophisticated Users
 
 Sophisticated users directly interact with the database using queries and database tools.
 
@@ -1549,7 +1549,7 @@ They may write SQL queries to analyze data.
 
 ---
 
-44. Specialized Users
+##44. Specialized Users
 
 Specialized users develop or use specialized database applications.
 
@@ -1567,7 +1567,7 @@ AI/data-intensive applications
 
 ---
 
-45. Database Administrator
+##45. Database Administrator
 
 The DBA manages the overall database environment.
 
@@ -1585,30 +1585,30 @@ Maintenance
 
 ---
 
-46. Important DBMS Terms
+##46. Important DBMS Terms
 
-46.1 Database
+###46.1 Database
 
 An organized collection of related data.
 
 
 ---
 
-46.2 DBMS
+###46.2 DBMS
 
 Software used to create, store, retrieve and manage databases.
 
 
 ---
 
-46.3 Table
+###46.3 Table
 
 A collection of rows and columns used to store data in a relational database.
 
 
 ---
 
-46.4 Row
+###46.4 Row
 
 A row represents one record/tuple.
 
@@ -1619,7 +1619,7 @@ Example:
 
 ---
 
-46.5 Column
+###46.5 Column
 
 A column represents an attribute/field.
 
@@ -1633,7 +1633,7 @@ Semester
 
 ---
 
-46.6 Schema
+###46.6 Schema
 
 A schema describes the logical structure of a database.
 
@@ -1650,7 +1650,7 @@ STUDENT
 
 ---
 
-46.7 Instance
+###46.7 Instance
 
 An instance is the actual data stored in the database at a particular moment.
 
@@ -1664,7 +1664,7 @@ The data can change over time while the schema may remain the same.
 
 ---
 
-47. MYSQL PRACTICALS
+##47. MYSQL PRACTICALS
 
 The following practicals provide a complete basic Unit-I MySQL workflow.
 
