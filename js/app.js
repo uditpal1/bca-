@@ -565,3 +565,73 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+/* =========================================
+   RESUME BUILDER POPUP
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const popup =
+    document.getElementById("resume-popup");
+
+  const closeBtn =
+    document.getElementById("resume-popup-close");
+
+  const laterBtn =
+    document.getElementById("resume-popup-later");
+
+
+  // Safety check
+  if (!popup) return;
+
+
+  /* -----------------------------------------
+     SHOW POPUP
+     
+     Popup 2 seconds after page loads
+  ----------------------------------------- */
+
+  setTimeout(function () {
+
+    popup.classList.add("show");
+
+  }, 2000);
+
+
+  /* -----------------------------------------
+     CLOSE BUTTON
+  ----------------------------------------- */
+
+  closeBtn.addEventListener("click", function () {
+
+    popup.classList.remove("show");
+
+  });
+
+
+  /* -----------------------------------------
+     MAYBE LATER
+  ----------------------------------------- */
+
+  laterBtn.addEventListener("click", function () {
+
+    popup.classList.remove("show");
+
+  });
+
+
+  /* -----------------------------------------
+     CLICK OUTSIDE POPUP
+  ----------------------------------------- */
+
+  popup.addEventListener("click", function (event) {
+
+    if (event.target === popup) {
+
+      popup.classList.remove("show");
+
+    }
+
+  });
+
+});
