@@ -9,10 +9,10 @@
 // Public GitHub repository me token expose mat karna.
 
 const TELEGRAM_BOT_TOKEN =
-  'YOUR_BOT_TOKEN_HERE';
+  '8626725900:AAGN7cUCHxU38UOB0kBv_M_o6PZ7sp7KOIc';
 
 const TELEGRAM_CHAT_ID =
-  'YOUR_CHAT_ID_HERE';
+  '6320680594';
 
 
 // ── Telegram Send Function ─────────────────────
