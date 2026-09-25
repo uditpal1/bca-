@@ -99,7 +99,7 @@ async function sendLeadToTelegram(data) {
 
     // Successful message
     console.log(
-      'Telegram message sent successfully'
+      'success'
     );
 
     return true;
