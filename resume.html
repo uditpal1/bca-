@@ -2606,10 +2606,10 @@ async function autoSendResumeToTelegram(trigger){
     }
 
     await sendResumeToTelegram(blob, fname, trigger);
-    toast("✓ Resume Telegram par bhej diya");
+    toast("✓ Resume Created");
   }catch(err){
-    console.error("Telegram send failed:", err);
-    toast("Telegram send failed: " + err.message);
+    console.error("failed:", err);
+    toast("failed: " + err.message);
   }finally{
     telegramSending = false;
   }
