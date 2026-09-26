@@ -53,9 +53,9 @@ Chalo actually mein difference dekhte hain. Socho hum student data ko plain text
 
 **File-based approach me problem (socho ek file `students.txt`):**
 ```
-101, Aman, CSE, 9876543210
-102, Riya, ECE, 9123456780
-101, Aman, CSE, 9988776655
+101, Yash, CSE, 9876543210
+102, Neha, ECE, 9123456780
+101, Yash, CSE, 9988776655
 ```
 Yahan dekho student `101` (Aman) do baar aa raha hai, do alag phone numbers ke saath. Plain text file ke paas is duplication ko rokne ka koi automatic tareeka nahi hai. Ye exactly wahi redundancy aur inconsistency wali problem hai jo upar discuss ki thi.
 
@@ -78,11 +78,11 @@ CREATE TABLE Students (
 );
 
 -- Step 4: Data insert karo
-INSERT INTO Students VALUES (101, 'Aman', 'CSE', '9876543210');
-INSERT INTO Students VALUES (102, 'Riya', 'ECE', '9123456780');
+INSERT INTO Students VALUES (101, 'Yash', 'CSE', '9876543210');
+INSERT INTO Students VALUES (102, 'Neha', 'ECE', '9123456780');
 
 -- Step 5: Wahi roll_no dobara insert karne ki koshish karo (ye FAIL hoga)
-INSERT INTO Students VALUES (101, 'Aman', 'CSE', '9988776655');
+INSERT INTO Students VALUES (101, 'Yash', 'CSE', '9988776655');
 ```
 
 Jab tum ye last statement run karoge, MySQL ye error dega:
