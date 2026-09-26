@@ -57,7 +57,7 @@ Chalo actually mein difference dekhte hain. Socho hum student data ko plain text
 102, Neha, ECE, 9123456780
 101, Yash, CSE, 9988776655
 ```
-Yahan dekho student `101` (Aman) do baar aa raha hai, do alag phone numbers ke saath. Plain text file ke paas is duplication ko rokne ka koi automatic tareeka nahi hai. Ye exactly wahi redundancy aur inconsistency wali problem hai jo upar discuss ki thi.
+Yahan dekho student `101` (Yash) do baar aa raha hai, do alag phone numbers ke saath. Plain text file ke paas is duplication ko rokne ka koi automatic tareeka nahi hai. Ye exactly wahi redundancy aur inconsistency wali problem hai jo upar discuss ki thi.
 
 **Ab yahi cheez MySQL me karte hain**, jahan DBMS humare liye rules enforce karta hai:
 
