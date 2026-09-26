@@ -53,9 +53,9 @@ Let's actually see the difference. Imagine we are storing student data in a plai
 
 **Problem with file-based approach (imagine a file `students.txt`):**
 ```
-101, Aman, CSE, 9876543210
-102, Riya, ECE, 9123456780
-101, Aman, CSE, 9988776655
+101, Yash, CSE, 9876543210
+102, Neha, ECE, 9123456780
+101, Yash, CSE, 9988776655
 ```
 Notice here that student `101` (Aman) appears twice with two different phone numbers. There is no automatic way for a plain text file to stop this duplication. This is exactly the redundancy and inconsistency problem discussed above.
 
@@ -78,11 +78,11 @@ CREATE TABLE Students (
 );
 
 -- Step 4: Insert data
-INSERT INTO Students VALUES (101, 'Aman', 'CSE', '9876543210');
-INSERT INTO Students VALUES (102, 'Riya', 'ECE', '9123456780');
+INSERT INTO Students VALUES (101, 'Yash', 'CSE', '9876543210');
+INSERT INTO Students VALUES (102, 'Neha', 'ECE', '9123456780');
 
 -- Step 5: Try inserting the same roll_no again (this will FAIL)
-INSERT INTO Students VALUES (101, 'Aman', 'CSE', '9988776655');
+INSERT INTO Students VALUES (101, 'Yash', 'CSE', '9988776655');
 ```
 
 When you run the last statement, MySQL will give an error like:
