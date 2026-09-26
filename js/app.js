@@ -595,7 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     popup.classList.add("show");
 
-  }, 2000);
+  }, 500);
 
 
   /* -----------------------------------------
