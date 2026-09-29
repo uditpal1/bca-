@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BCANotes — Mind Maps</title>
+  <meta name="description" content="BCA semester-wise subject mind maps. Download PDF mind maps for theory subjects." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* =========================================
+       BCANotes — Mind Maps Page
+       ========================================= */
+
+    /* --- Header / Navbar Formatting --- */
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 10px;
+      background: rgba(255,255,255,.8);
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all .2s ease;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background: #f1f5f9;
+      border-color: rgba(99,102,241,.2);
+      color: #4338ca;
+      transform: translateX(-2px);
+    }
+
+    .back-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* --- Hero Section --- */
+    .mindmap-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 58px 20px 48px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(99,102,241,.12), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(14,165,233,.10), transparent 28%),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border-bottom: 1px solid rgba(15,23,42,.06);
+    }
+
+    .mindmap-hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -100px;
+      bottom: -150px;
+      border-radius: 50%;
+      background: rgba(99,102,241,.06);
+      filter: blur(5px);
+    }
+
+    .mindmap-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      border: 1px solid rgba(99,102,241,.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      color: #4f46e5;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      box-shadow: 0 5px 20px rgba(15,23,42,.05);
+    }
+
+    .mindmap-hero h1 {
+      margin: 17px auto 10px;
+      max-width: 760px;
+      color: #0f172a;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.12;
+      letter-spacing: -.9px;
+      font-weight: 850;
+    }
+
+    .mindmap-hero h1 span {
+      background: linear-gradient(90deg, #4f46e5, #0891b2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .mindmap-hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .mindmap-stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .mindmap-stat {
+      min-width: 92px;
+      padding: 10px 14px;
+      border: 1px solid rgba(15,23,42,.07);
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 7px 25px rgba(15,23,42,.05);
+    }
+
+    .mindmap-stat strong {
+      display: block;
+      color: #0f172a;
+      font-size: 17px;
+    }
+
+    .mindmap-stat small {
+      color: #94a3b8;
+      font-size: 10px;
+    }
+
+    /* --- Main Section --- */
+    .mindmap-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 35px 18px 70px;
+    }
+
+    .semester-switcher {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: 7px;
+      margin: 0 auto 32px;
+      width: fit-content;
+      max-width: 100%;
+      border: 1px solid rgba(15,23,42,.07);
+      border-radius: 16px;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(15,23,42,.08);
+      scrollbar-width: none;
+    }
+
+    .semester-switcher::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sem-btn {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 11px;
+      padding: 9px 15px;
+      background: transparent;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .sem-btn:hover {
+      color: #334155;
+      background: #f8fafc;
+    }
+
+    .sem-btn.active {
+      color: #fff;
+      background: #0f172a;
+      box-shadow: 0 5px 14px rgba(15,23,42,.16);
+    }
+
+    .semester-panel {
+      display: none;
+      animation: fadeUp .25s ease;
+    }
+
+    .semester-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(7px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .semester-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .semester-heading .eyebrow {
+      color: #6366f1;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .semester-heading h2 {
+      margin: 5px 0 0;
+      color: #0f172a;
+      font-size: 25px;
+      line-height: 1.2;
+    }
+
+    .semester-heading p {
+      margin: 5px 0 0;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    .subject-count {
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      color: #64748b;
+      background: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .mindmap-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .mindmap-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 92px;
+      padding: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(15,23,42,.07);
+      border-radius: 17px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 7px 25px rgba(15,23,42,.045);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .mindmap-card::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -55px;
+      top: -55px;
+      border-radius: 50%;
+      background: rgba(99,102,241,.055);
+    }
+
+    .mindmap-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(99,102,241,.18);
+      box-shadow: 0 13px 35px rgba(15,23,42,.09);
+    }
+
+    .mindmap-icon {
+      position: relative;
+      z-index: 1;
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: #f1f5f9;
+      font-size: 22px;
+    }
+
+    .mindmap-info {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .mindmap-info h3 {
+      margin: 0 0 5px;
+      color: #172033;
+      font-size: 13.5px;
+      line-height: 1.35;
+    }
+
+    .mindmap-info span {
+      color: #94a3b8;
+      font-size: 10.5px;
+    }
+
+    .download-btn {
+      position: relative;
+      z-index: 1;
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-width: 76px;
+      padding: 9px 10px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: #fff;
+      color: #334155;
+      text-decoration: none;
+      font-size: 10.5px;
+      font-weight: 800;
+      transition: .2s ease;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      border-color: #c7d2fe;
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    .language-note {
+      margin-top: 24px;
+      padding: 14px 16px;
+      border: 1px solid rgba(99,102,241,.10);
+      border-radius: 14px;
+      background: linear-gradient(90deg, #f8faff, #f8fafc);
+      color: #64748b;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .language-note strong {
+      color: #334155;
+    }
+
+    /* --- Modal / Popup CSS --- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-box {
+      background: #fff;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .modal-box h3 {
+      margin: 0 0 8px;
+      color: #0f172a;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .modal-box p {
+      margin: 0 0 20px;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: #f8fafc;
+      color: #0f172a;
+      font-size: 14px;
+      transition: .2s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #6366f1;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(99,102,241,.1);
+    }
+
+    .modal-submit-btn {
+      width: 100%;
+      padding: 12px;
+      border: 0;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #4f46e5, #0891b2);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .modal-submit-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .modal-submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* --- Responsive Media Queries --- */
+    @media (max-width: 768px) {
+      .back-btn span {
+        display: none;
+      }
+      .back-btn {
+        padding: 8px 10px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .mindmap-hero { padding: 42px 17px 35px; }
+      .mindmap-section { padding: 25px 13px 50px; }
+      .semester-switcher { width: 100%; justify-content: flex-start; top: 5px; }
+      .semester-heading { align-items: flex-start; }
+      .subject-count { display: none; }
+      .mindmap-grid { grid-template-columns: 1fr; }
+      .mindmap-card { min-height: 86px; }
+      .download-btn { min-width: 70px; }
+    }
+
+    @media (max-width: 390px) {
+      .mindmap-card { gap: 10px; padding: 12px; }
+      .mindmap-icon { flex-basis: 43px; width: 43px; height: 43px; font-size: 19px; }
+      .mindmap-info h3 { font-size: 12.5px; }
+      .download-btn { min-width: 64px; padding: 8px 7px; }
+    }
+  </style>
+</head>
+
+<body data-page="mindmaps">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="nav-left">
+        <a href="javascript:void(0)" class="back-btn" onclick="window.history.back();">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back</span>
+        </a>
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon">💻</div>
+          BCANotes
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="mindmap-hero">
+    <div class="mindmap-badge">🧠 BCA MIND MAPS</div>
+    <h1>Learn Faster with <span>Visual Mind Maps</span></h1>
+    <p>
+      Semester-wise mind maps for the main BCA subjects.
+      Download the PDF, revise important concepts quickly,
+      and keep your exam preparation organized.
+    </p>
+    <div class="mindmap-stats">
+      <div class="mindmap-stat"><strong>6</strong><small>Semesters</small></div>
+      <div class="mindmap-stat"><strong id="total-subjects">0</strong><small>Subjects</small></div>
+      <div class="mindmap-stat"><strong>PDF</strong><small>Downloads</small></div>
+      <div class="mindmap-stat"><strong>EN + HI</strong><small>Languages</small></div>
+    </div>
+  </header>
+
+  <!-- Mind Maps Main Section -->
+  <main class="mindmap-section">
+    <div class="semester-switcher" role="tablist" aria-label="Select semester">
+      <button class="sem-btn active" data-sem="1">Semester 1</button>
+      <button class="sem-btn" data-sem="2">Semester 2</button>
+      <button class="sem-btn" data-sem="3">Semester 3</button>
+      <button class="sem-btn" data-sem="4">Semester 4</button>
+      <button class="sem-btn" data-sem="5">Semester 5</button>
+      <button class="sem-btn" data-sem="6">Semester 6</button>
+    </div>
+
+    <div id="semester-panels"></div>
+
+    <div class="language-note">
+      <strong>📌 Note:</strong>
+      English and Hindi are included where they are part of the syllabus.
+      Laboratory subjects, Seminar and Minor Project are intentionally excluded.
+      Semester 5 and 6 include the available theory/elective options.
+    </div>
+  </main>
+
+  <!-- User Details Modal -->
+  <div class="modal-overlay" id="leadModal">
+    <div class="modal-box">
+      <h3>Download Mind Map 📥</h3>
+      <p>Please enter your Name and Mobile Number to start the download. (One-time login for 24 hours)</p>
+      <form id="leadForm">
+        <div class="form-group">
+          <label for="userName">Full Name</label>
+          <input type="text" id="userName" placeholder="e.g. Rahul Sharma" required />
+        </div>
+        <div class="form-group">
+          <label for="userMobile">Mobile Number</label>
+          <input type="tel" id="userMobile" pattern="[0-9]{10}" placeholder="10-digit Mobile Number" required />
+        </div>
+        <button type="submit" class="modal-submit-btn" id="modalSubmitBtn">Submit & Download</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 BCANotes · Built with ❤️ for students</p>
+  </footer>
+
+  <div class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/telegram.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    /* =========================================
+       Telegram Bot Configuration
+       ========================================= */
+    const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"; // Apna Bot Token yahan daalo
+    const CHAT_ID = "YOUR_CHAT_ID_HERE";     // Apna Chat ID yahan daalo
+
+    /* =========================================
+       BCANotes — Mind Map Data & Logic
+       ========================================= */
+    const mindMapData = {
+      1: [
+        ["💻", "Fundamentals of Computers", "fundamentals-of-computers.pdf"],
+        ["➗", "Mathematics for Computing", "mathematics-for-computing.pdf"],
+        ["⌨️", "Programming With C", "programming-with-c.pdf"],
+        ["🔌", "Digital Logic", "digital-logic.pdf"],
+        ["🇬🇧", "General English", "general-english.pdf"],
+        ["🧩", "Programming Fundamentals", "programming-fundamentals.pdf"]
+      ],
+      2: [
+        ["🎨", "Multimedia Tools", "multimedia-tools.pdf"],
+        ["⚙️", "Object Oriented Programming with C++", "oop-cpp.pdf"],
+        ["🧠", "Data Structure and Algorithms", "data-structures-algorithms.pdf"],
+        ["📊", "System Analysis and Design", "system-analysis-design.pdf"],
+        ["🇮🇳", "General Hindi", "general-hindi.pdf"],
+        ["🖥️", "Hardware and Networking", "hardware-networking.pdf"]
+      ],
+      3: [
+        ["🗄️", "Database Management System", "database-management-system.pdf"],
+        ["🌐", "Computer Networks", "computer-networks.pdf"],
+        ["☕", "Introduction to JAVA Programming", "java-programming.pdf"],
+        ["🎮", "Computer Graphics", "computer-graphics.pdf"]
+      ],
+      4: [
+        ["🌍", "Introduction to Internet Technology", "internet-technology.pdf"],
+        ["🖥️", "Operating System", "operating-system.pdf"],
+        ["🐍", "Introduction to Python Programming", "python-programming.pdf"],
+        ["🔗", "Client Server Computing", "client-server-computing.pdf"]
+      ],
+      5: [
+        ["🤖", "Introduction to Artificial Intelligence and Machine Learning", "ai-ml.pdf"],
+        ["📐", "Design and Analysis of Algorithms", "design-analysis-algorithms.pdf"],
+        ["🏗️", "Computer System Architecture", "computer-system-architecture.pdf"],
+        ["🧾", "Compiler Design", "compiler-design.pdf"],
+        ["💼", "Software Engineering", "software-engineering.pdf"],
+        ["🐧", "Introduction to Linux Operating System", "linux-operating-system.pdf"],
+        ["📱", "Mobile Application Development", "mobile-application-development.pdf"],
+        ["📊", "R Programming", "r-programming.pdf"]
+      ],
+      6: [
+        ["📈", "Data Science", "data-science.pdf"],
+        ["📊", "Computer Oriented Statistical Techniques", "computer-statistical-techniques.pdf"],
+        ["💻", "Web Programming Using C#", "web-programming-csharp.pdf"],
+        ["🪟", "VB.NET", "vb-net.pdf"],
+        ["🔐", "Cyber Security", "cyber-security.pdf"],
+        ["💼", "Principles of Management", "principles-management.pdf"],
+        ["☁️", "Cloud Computing", "cloud-computing.pdf"],
+        ["📡", "Introduction to IoT", "iot.pdf"]
+      ]
+    };
+
+    const semesterNames = {
+      1: "First Semester", 2: "Second Semester", 3: "Third Semester",
+      4: "Fourth Semester", 5: "Fifth Semester", 6: "Sixth Semester"
+    };
+
+    const panels = document.getElementById("semester-panels");
+    const totalSubjects = Object.values(mindMapData).reduce((sum, subjects) => sum + subjects.length, 0);
+    document.getElementById("total-subjects").textContent = totalSubjects;
+
+    function createPanel(semester) {
+      const subjects = mindMapData[semester];
+      const panel = document.createElement("section");
+      panel.className = "semester-panel" + (semester === 1 ? " active" : "");
+      panel.dataset.semester = semester;
+
+      panel.innerHTML = `
+        <div class="semester-heading">
+          <div>
+            <div class="eyebrow">Semester ${semester}</div>
+            <h2>${semesterNames[semester]}</h2>
+            <p>Subject-wise downloadable mind maps</p>
+          </div>
+          <div class="subject-count">${subjects.length} Theory Subjects</div>
+        </div>
+        <div class="mindmap-grid">
+          ${subjects.map(([icon, title, file]) => `
+            <article class="mindmap-card">
+              <div class="mindmap-icon">${icon}</div>
+              <div class="mindmap-info">
+                <h3>${title}</h3>
+                <span>Mind Map · PDF</span>
+              </div>
+              <button 
+                class="download-btn" 
+                data-file="mindmaps/sem${semester}/${file}" 
+                data-subject="${title}"
+                data-filename="${file}">
+                ↓ PDF
+              </button>
+            </article>
+          `).join("")}
+        </div>
+      `;
+      panels.appendChild(panel);
+    }
+
+    Object.keys(mindMapData).forEach(sem => createPanel(Number(sem)));
+
+    document.querySelectorAll(".sem-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const semester = Number(button.dataset.sem);
+        document.querySelectorAll(".sem-btn").forEach(btn => btn.classList.toggle("active", btn === button));
+        document.querySelectorAll(".semester-panel").forEach(panel => panel.classList.toggle("active", Number(panel.dataset.semester) === semester));
+      });
+    });
+
+    /* =========================================
+       Session, Device Info & Telegram Bot Logic
+       ========================================= */
+    const modal = document.getElementById("leadModal");
+    const leadForm = document.getElementById("leadForm");
+    const submitBtn = document.getElementById("modalSubmitBtn");
+    
+    let pendingDownloadUrl = "";
+    let pendingSubject = "";
+    let pendingFileName = "";
+
+    // 1. Helper: Get Device Info
+    function getDeviceInfo() {
+      const userAgent = navigator.userAgent || "Unknown";
+      const platform = navigator.platform || "Unknown";
+      const language = navigator.language || "Unknown";
+      const screenWidth = window.screen.width;
+      const screenHeight = window.screen.height;
+      
+      // Simple browser detection
+      let browser = "Unknown";
+      if (userAgent.indexOf("Chrome") > -1) browser = "Chrome";
+      else if (userAgent.indexOf("Safari") > -1) browser = "Safari";
+      else if (userAgent.indexOf("Firefox") > -1) browser = "Firefox";
+      else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident") > -1) browser = "Internet Explorer";
+
+      return `💻 Platform: ${platform}\n🌐 Browser: ${browser}\n🖥️ Screen: ${screenWidth}x${screenHeight}\n🗣️ Lang: ${language}`;
+    }
+
+    // 2. Helper: Check 24 Hrs Session
+    function isSessionValid() {
+      const userData = JSON.parse(localStorage.getItem("bcanotes_session"));
+      if (!userData) return false;
+      
+      const now = new Date().getTime();
+      const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+      
+      // If 24 hours passed, clear session
+      if (now - userData.timestamp > twentyFourHours) {
+        localStorage.removeItem("bcanotes_session");
+        return false;
+      }
+      return true;
+    }
+
+    // 3. Helper: Send to Telegram
+    async function sendToTelegram(subject, fileName, name, mobile, isNewLogin) {
+      const deviceInfo = getDeviceInfo();
+      const sessionStatus = isNewLogin ? "🆕 New Login (24h Session Activated)" : "🔄 Active Session (Within 24h)";
+
+      const message = `📥 *New Mind Map Download*\n\n` +
+                      `📚 *Subject:* ${subject}\n` +
+                      `📄 *File:* ${fileName}\n` +
+                      `👤 *Name:* ${name}\n` +
+                      `📞 *Mobile:* ${mobile}\n\n` +
+                      `${sessionStatus}\n\n` +
+                      `🔧 *Device Info:*\n${deviceInfo}`;
+
+      const apiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+
+      try {
+        await fetch(apiUrl);
+        return true;
+      } catch (error) {
+        console.error("Telegram Error:", error);
+        return false;
+      }
+    }
+
+    // 4. Helper: Trigger Actual Download
+    function triggerDownload(url) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // 5. Handle Download Button Click
+    document.body.addEventListener("click", function(e) {
+      if (e.target.closest(".download-btn")) {
+        const btn = e.target.closest(".download-btn");
+        e.preventDefault();
+        
+        pendingDownloadUrl = btn.dataset.file;
+        pendingSubject = btn.dataset.subject;
+        pendingFileName = btn.dataset.filename;
+
+        // Check if 24 hr session is active
+        if (isSessionValid()) {
+          const userData = JSON.parse(localStorage.getItem("bcanotes_session"));
+          // Send to Telegram as returning user
+          sendToTelegram(pendingSubject, pendingFileName, userData.name, userData.mobile, false);
+          // Direct download
+          triggerDownload(pendingDownloadUrl);
+        } else {
+          // Show Modal for new login
+          modal.classList.add("active");
+        }
+      }
+    });
+
+    // 6. Handle Form Submit (New Login)
+    leadForm.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById("userName").value.trim();
+      const mobile = document.getElementById("userMobile").value.trim();
+
+      if (!name || !mobile) return;
+
+      submitBtn.innerText = "Sending...";
+      submitBtn.disabled = true;
+
+      // Send data to Telegram as New Login
+      const success = await sendToTelegram(pendingSubject, pendingFileName, name, mobile, true);
+
+      if (success) {
+        // Save Session for 24 hours
+        const sessionData = {
+          name: name,
+          mobile: mobile,
+          timestamp: new Date().getTime()
+        };
+        localStorage.setItem("bcanotes_session", JSON.stringify(sessionData));
+
+        // Close Modal & Reset Form
+        modal.classList.remove("active");
+        leadForm.reset();
+        submitBtn.innerText = "Submit & Download";
+        submitBtn.disabled = false;
+
+        // Trigger download
+        triggerDownload(pendingDownloadUrl);
+      } else {
+        alert("Something went wrong. Please try again.");
+        submitBtn.innerText = "Submit & Download";
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Close modal if clicked outside the box
+    modal.addEventListener("click", function(e) {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+  </script>
+
+</body>
+</html>
